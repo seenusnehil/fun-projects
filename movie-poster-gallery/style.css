@@ -1,75 +1,78 @@
-/* Global Styles */
+/* General Styles */
 body {
+    font-family: 'Roboto Mono', monospace;
     margin: 0;
     padding: 0;
-    background-color: black;
     font-family: Arial, sans-serif;
+    background-color: black;
     color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-  }
-  
-  .container {
     text-align: center;
-    padding-top: 20px;
-    flex-grow: 1;
-  }
-  
-  /* Title */
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-    color: white;
-  }
-  
-  /* Gallery container */
-  .gallery {
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 36px;
+}
+
+/* Carousel Styles */
+.carousel-container {
+    position: relative;
+    width: 80%;
+    margin: 40px auto;
     overflow: hidden;
-    width: 100%;
-    position: relative;
-  }
-  
-  /* Carousel Styles */
-  .carousel {
+    padding: 0 50px; /* Padding on the left and right sides to avoid extreme edges */
+}
+
+.carousel {
     display: flex;
-    animation: scroll-left 20s linear infinite;
-  }
-  
-  .carousel img {
-    width: auto;
-    height: 100%;
-    margin: 0 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    filter: brightness(80%);
-  }
-  
-  .carousel img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-  }
-  
-  /* Footer */
-  footer {
-    text-align: center;
-    font-size: 0.9rem;
-    padding: 10px;
-    background-color: #111;
-    color: white;
-    position: relative;
-  }
-  
-  /* Animation for scrolling */
-  @keyframes scroll-left {
-    from {
-      transform: translateX(0);
+    flex-direction: row;
+    animation: scroll-left 40s linear infinite; /* Slow down scrolling to 20 seconds */
+}
+
+.carousel img {
+    width: 500px;
+    height: 600px;
+    object-fit: cover; /* Ensures the image covers the area properly without distortion */
+    margin: 0 20px; /* Add some space on the sides */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+    border-radius: 20px;
+}
+
+
+/* Hover Effect - On hover image pops out */
+.carousel img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: gray;
+}
+
+
+.logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.logo img {
+    width: 50px; /* Adjust the size of the logo */
+    height: auto;
+}
+
+/* Scrolling Animation */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(100%);
     }
-    to {
-      transform: translateX(-100%);
+    100% {
+        transform: translateX(-100%);
     }
-  }
-  
+}

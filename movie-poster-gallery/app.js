@@ -1,27 +1,28 @@
-// Insert images dynamically into the carousel
-window.onload = function() {
+document.addEventListener("DOMContentLoaded", function() {
     const carousel = document.querySelector('.carousel');
-  
-    // Add images to the carousel (adjust the path to your image folder)
-    const imageFolder = 'S:\\Fun-projects\\movie-poster-gallery\\uploaded_posters'; // Replace with the correct folder path
-    const images = ['albert_einstein.jpg', 'apj_abdul_kalam.jpg', 'charles_darwin.jpg', 'elon_musk.jpg', 'geoffrey_hinton.jpg', 'isaac_newton.jpg', 'nicola_tesla.jpg', 'madame_curie.jpg']; // Add your image filenames
-  
-    images.forEach(image => {
-      const imgElement = document.createElement('img');
-      imgElement.src = `${imageFolder}/${image}`; // Adjust path as necessary
-      imgElement.alt = 'Movie Poster';
-      carousel.appendChild(imgElement);
+    
+    // List of image URLs
+    const imagePaths = [
+        'uploaded_posters/albert_einstein.png',
+        'uploaded_posters/elon_musk.png',
+        'uploaded_posters/madame_curie.png',
+        'uploaded_posters/charles_darwin.png',
+        'uploaded_posters/nicola_tesla.png',
+        'uploaded_posters/apj_abdul_kalam.png',
+        'uploaded_posters/geoffrey_hinton.png',
+        'uploaded_posters/isaac_newton.png'
+    ];
+
+    // Loop through each image path and create an img element for each
+    imagePaths.forEach(path => {
+        const img = document.createElement('img');
+        img.src = path;
+        img.alt = 'Movie Poster';
+        img.classList.add('poster');
+        carousel.appendChild(img);
     });
-  
-    // Stop the scrolling when hovering over the images
-    const carouselImages = document.querySelectorAll('.carousel img');
-    carouselImages.forEach(image => {
-      image.addEventListener('mouseenter', () => {
-        document.querySelector('.carousel').style.animationPlayState = 'paused';
-      });
-      image.addEventListener('mouseleave', () => {
-        document.querySelector('.carousel').style.animationPlayState = 'running';
-      });
-    });
-  };
-  
+
+    // Duplicate the images to create a continuous loop effect
+    const clonedImages = carousel.innerHTML;
+    carousel.innerHTML += clonedImages;
+});
